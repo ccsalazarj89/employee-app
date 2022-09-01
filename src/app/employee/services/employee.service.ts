@@ -8,14 +8,17 @@ import { Employee } from '../interfaces/employee-interface';
 })
 export class EmployeeService {
 
-  private employeeUrlBase:string = "http://dummy.restapiexample.com/api/v1/employee";
+  private employeeUrlBase:string = "http://localhost:8080/api/v1/employees";
 
   constructor(private http: HttpClient) { }
 
-    searchEmployee(id: string) : Observable<Employee[]>{
-
+    searchEmployee(id: string) : Observable<Employee>{
       const url = `${this.employeeUrlBase}/${id}`;
-      console.log(url)
+      return this.http.get<Employee>(url);
+    }
+
+    searchAllEmployee(): Observable<Employee[]>{
+      const url = `${this.employeeUrlBase}`;
       return this.http.get<Employee[]>(url);
     }
 

@@ -38,12 +38,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of employees; let i = index ">
-                        <td>{{i}}</td>
+                        <td>{{employee.id}}</td>
                         <td>{{employee.employee_name}}</td>
                         <td>{{employee.employee_age}}</td>
-                        <td>{{employee.employee_salary}} USD</td>
-                        <td>36000 USD</td>
-                        <td>{{employee.profile_image}</td>
+                        <td>{{employee.employee_salary |number }} USD</td>
+                        <td>{{employee.employee_annual_salary | number}} USD</td>
+                        <td>{{employee.profile_image}}</td>
                     </tr>
                 </tbody>
            </table> 

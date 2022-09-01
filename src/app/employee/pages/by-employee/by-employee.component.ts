@@ -19,10 +19,16 @@ export class ByEmployeeComponent implements OnInit {
   }
 
   search(){
-    console.log(this.parameter);
-    this.employeeService.searchEmployee(this.parameter)
-    .subscribe((employees)=> {console.log(employees)
-    this.employees = employees})
+    if (this.parameter=== ""){
+      this.employeeService.searchAllEmployee()
+      .subscribe((employees)=>{ 
+          this.employees=employees})
+    }else{
+      this.employeeService.searchEmployee(this.parameter)
+      .subscribe((employees)=> {
+          this.employees = [employees]})
+    }
+    
   }
 
 }
